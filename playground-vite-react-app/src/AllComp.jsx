@@ -3,6 +3,9 @@ import React from 'react'
 const PlayGround = React.lazy(() => import("./Test/PlayGround"));
 const UseStateHook = React.lazy(() => import("./hooks/useState"));
 const UseReducerHook = React.lazy(() => import("./hooks/UseReducerHook"));
+const UseContextHook = React.lazy(() => import("./hooks/useContextAPI/Comp1"));
+const UseEffectHook = React.lazy(() => import("./hooks/useEffect"));
+const DependencyDropdown = React.lazy(() => import('./Test/DependencyDropdown'));
 
 const AllComp = () => {
   const [page, setPage] = React.useState("");
@@ -10,8 +13,10 @@ const AllComp = () => {
   const screensList = [
     { screenName: "UseStateHook" },
     { screenName: "UseReducerHook" },
-    { screenName: "Play Ground" }
-
+    { screenName: "Play Ground" },
+    { screenName: "UseContextHook" },
+    { screenName: "Dependency Dropdown" },
+    { screenName: "UseEffectHook" }
   ];
 
   function getScreens(screen) {
@@ -22,6 +27,12 @@ const AllComp = () => {
         return <UseReducerHook />;
       case "Play Ground":
         return <PlayGround />;
+      case "UseContextHook":
+        return <UseContextHook />;
+      case "Dependency Dropdown":
+        return <DependencyDropdown />;
+      case "UseEffectHook":
+        return <UseEffectHook />;
       default:
         return <UseStateHook />;
     }
@@ -47,7 +58,7 @@ const AllComp = () => {
 }
 
 function Loading() {
-  return <div>Loading...</div>
+  return <center style={{paddingTop: "2rem"}}>Loading...</center>
 }
 
 export default AllComp;
