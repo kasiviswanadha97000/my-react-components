@@ -1,10 +1,10 @@
 import React from 'react'
 
 const PlayGround = React.lazy(() => import("./Test/PlayGround"));
-const UseStateHook = React.lazy(() => import("./hooks/useState"));
+const UseStateHook = React.lazy(() => import("./hooks/UseState"));
 const UseReducerHook = React.lazy(() => import("./hooks/UseReducerHook"));
 const UseContextHook = React.lazy(() => import("./hooks/useContextAPI/Comp1"));
-const UseEffectHook = React.lazy(() => import("./hooks/useEffect"));
+const UseEffectHook = React.lazy(() => import("./hooks/UseEffect"));
 const DependencyDropdown = React.lazy(() => import('./Test/DependencyDropdown'));
 
 const AllComp = () => {

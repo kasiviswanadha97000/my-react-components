@@ -1,14 +1,16 @@
 import React from 'react';
+import { useCounter } from '../hooks/useCoustemHook/useCounter';
 
 const countries = [
     { name: 'India', value: 'IND', cities: ["Delhi", "Mumbai"] },
     { name: 'America', value: 'USA', cities: ["New York", "Washington"] },
     { name: 'Cenada', value: 'CND', cities: ["Torranto", "Mexio"] }
-]
+];
 
 function DependencyDropdown() {
     
     const [cities, setCities] = React.useState([]);
+    const {count, increment, decrement} = useCounter();
 
     const handleChange = (e) => {
         var i = e.target.value; 
@@ -31,6 +33,11 @@ function DependencyDropdown() {
                     {cities.map((x) => <option key={x}>{x}</option>)}                    
                 </select>
                 : <></>}
+            <center>
+                <button onClick={increment}>+</button>
+                <div>{count}</div>
+                <button onClick={decrement}>-</button>
+            </center>
         </div>
     )
 }

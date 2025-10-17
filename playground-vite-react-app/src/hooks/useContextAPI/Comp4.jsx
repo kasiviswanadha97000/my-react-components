@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { userContext } from './Comp1.jsx';
-import { useDebounce, useDebouncedCallback } from '../useCoustemHook/useDebounce.jsx'
+import { useDebounce, useDebouncedCallback } from '../useCoustemHook/useDebounce.jsx';
 
 const initalAddUser = {
     id: 0,       
@@ -8,12 +8,14 @@ const initalAddUser = {
     email: ""
 };
 
+
 export default function Comp4() {
-  const context = useContext(userContext);
   const [addUser, setUser] = React.useState(initalAddUser);
   const [disableBtn, setDisableBtn] = React.useState(false);
-  const debounceName = useDebounce(addUser.name, 500);
+  const  debounceName = useDebounce(addUser.name, 500);
   //const debounceEmail = useDebounce(addUser.email, 500);
+  const context = useContext(userContext);
+  const debounceBtnSubmit = useDebouncedCallback(handleSubmit, 500);//useTest
   
   //Check debounce values
     React.useEffect(() => {
@@ -30,7 +32,7 @@ export default function Comp4() {
 
   const { usersList, setUsersList } = context;  
   // Sunmit button
-  const handleSubmit = () => {   
+  function handleSubmit() {   
     // simple validation
     if (!addUser.name || !addUser.email) return; 
 
@@ -43,8 +45,7 @@ export default function Comp4() {
     
     setDisableBtn(false);
   }
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const debounceBtnSubmit = useDebouncedCallback(handleSubmit, 500);
+
 
 // Reset button
   const handleReset = () => {
@@ -52,6 +53,7 @@ export default function Comp4() {
   }
 
   const handleChange = (e, keyName) => {
+    console.log(e.target.value)
     setUser({...addUser, [keyName]: e.target.value});
   }
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function useEffect() {
+function UseEffect() {
   const [count, setCount] = React.useState(0);
   console.log("-------inside component---------");
   React.useEffect(() => {
@@ -8,10 +8,10 @@ function useEffect() {
       console.log("-------useEffect loops---------");// componentDidMount() -> It run after first render
   }, [count])
   return (
-    <div style={{paddingTop:"2rem"}}>
+    <center style={{paddingTop:"2rem"}}>
       <button onClick={() => setCount(count+1) }>+</button>
-    </div>
+    </center>
   )
 }
 
-export default useEffect;
+export default UseEffect;

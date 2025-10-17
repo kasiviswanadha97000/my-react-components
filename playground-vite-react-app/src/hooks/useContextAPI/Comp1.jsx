@@ -15,6 +15,10 @@ const userList = [
 export default function Comp1() {
   const [usersList, setUsersList] = React.useState(userList || []);
   const newLocal = { usersList, setUsersList };
+
+  function handleDelete(index) {
+     setUsersList(usersList.filter((_, i) => i !== index));
+  }
   return (
     <center style={{ paddingTop: "45px" }}>
       <div>comp-1</div>
@@ -22,9 +26,9 @@ export default function Comp1() {
         <Comp2 />
       </userContext.Provider>
       <ul>
-        {usersList.length > 0 ? usersList.map((user) => (
+        {usersList.length > 0 ? usersList.map((user, index) => (
           <div key={user?.id}>
-            {user?.id} {user?.name} {user?.email}
+            {user?.id} {user?.name} {user?.email} <span onClick={() => handleDelete(index)} className='btnDelete'>X</span>
           </div>
         )) : <></>}
       </ul>
